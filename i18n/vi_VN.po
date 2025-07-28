@@ -1,0 +1,440 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-03 14:30+0000\n"
+"PO-Revision-Date: 2024-05-03 14:30+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+
+#. module: sale
+#. odoo-python
+#: code:addons/sale/models/sale_order.py:0
+#: model:ir.model.fields.selection,name:sale.selection__product_document__attached_on__quotation
+#: model:ir.model.fields.selection,name:sale.selection__sale_order__state__draft
+#: model:ir.model.fields.selection,name:sale.selection__sale_report__state__draft
+#: model_terms:ir.ui.view,arch_db:sale.product_document_search
+#, python-format
+msgid "Quotation"
+msgstr "Đã thanh toán"
+
+
+#. module: sale
+#. odoo-python
+#: code:addons/sale/models/sale_order.py:0
+#: model:ir.model.fields.selection,name:sale.selection__sale_order__state__sale
+#: model:ir.model.fields.selection,name:sale.selection__sale_report__state__sale
+#, python-format
+msgid "Sales Order"
+msgstr "Chưa thanh toán"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid ""
+"(GIAO MIỄN PHÍ NỘI THÀNH ĐÀ NẴNG VỚI NHỮNG ĐƠN HÀNG TRÊN\n"
+"                            200.000VNĐ)"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "(Ký ghi rõ họ tên)"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.actions.report,print_report_name:sale_custom.quotation_reports_menu
+msgid ""
+"(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or "
+"'Order - %s' % (object.name)"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "<span style=\"font-weight: bold;\">PHIẾU GIAO NHẬN HÀNG</span>"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "<span> ₫</span>"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "<span>VAT</span>"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Add a note"
+msgstr "Thêm ghi chú"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Add a product"
+msgstr "Thêm sản phẩm"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Add a section"
+msgstr "Thêm dòng trống"
+
+#. module: sale_custom
+#: model:ir.model.fields,field_description:sale_custom.field_sale_order_line__paper_set
+msgid "Bộ"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Catalog"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Customer"
+msgstr "Khách hàng"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "CỬA HÀNG DỊCH VỤ IN 43 ĐÀ NẴNG"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Delivered"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Disc.%"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Email: in43danang@gmail.com"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Future Activities"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Group By"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "HÌNH THỨC"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.model.fields.selection,name:sale_custom.selection__sale_order_line__specifications__i1
+msgid "In TĐ 1 mặt"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.model.fields.selection,name:sale_custom.selection__sale_order_line__specifications__i2
+msgid "In TĐ 2 mặt"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.actions.report,name:sale_custom.quotation_reports_menu
+msgid "In báo giá"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.model.fields.selection,name:sale_custom.selection__sale_order_line__specifications__i3
+msgid "In màu 1 mặt"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.model.fields.selection,name:sale_custom.selection__sale_order_line__specifications__i4
+msgid "In màu 2 mặt"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Invoiced"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Ký nhận"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Late Activities"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "My Orders"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Ngày đặt hàng"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Người mua:"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "NẾU KHÔNG HÀI LÒNG VỀ SẢN PHẨM VÀ DỊCH VỤ CỦA CHÚNG TÔI."
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "NỘI DUNG"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Order"
+msgstr "Đơn hàng"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Order Date"
+msgstr "Ngày đặt hàng"
+
+#. module: sale_custom
+#: model:ir.model.fields.selection,name:sale_custom.selection__sale_order_line__specifications__f1
+msgid "Photo TĐ 1 mặt"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.model.fields.selection,name:sale_custom.selection__sale_order_line__specifications__f2
+msgid "Photo TĐ 2 mặt"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Product"
+msgstr "Sản phẩm"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "QUY CÁCH"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Recompute all prices based on this pricelist"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "SCAN ME"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "SL BỘ"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "STK: 5650194016 - Hồ Thị Bích Trâm - BIDV/CN Sông Hàn"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.model,name:sale_custom.model_sale_order
+msgid "Sales Order"
+msgstr "Chưa thanh toán"
+
+
+#. module: sale_custom
+#: model:ir.model,name:sale_custom.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Dòng đơn bán hàng"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Sales Order Lines"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Sales Team"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Salesperson"
+msgstr "Nhân viên bán hàng"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Search Sales Order"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Show all records which has next action date is before today"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.model.fields,field_description:sale_custom.field_sale_order_line__specifications
+msgid "Specifications"
+msgstr "Quy cách"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "SỐ TỜ"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.model.fields,field_description:sale_custom.field_sale_order__phone_number
+msgid "Số điện thoại"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "THÀNH TIỀN"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "TT"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Tax excl."
+msgstr "Tổng chưa thuế"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Tax incl."
+msgstr "Thành tiền"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid ""
+"This will update the unit price of all products based on the new pricelist."
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Thuế"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Thời gian giao hàng:"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Tiền hàng"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.model.fields,field_description:sale_custom.field_sale_order__advance_payment
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Tiền ứng trước"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_search
+msgid "Today Activities"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Type to find a customer..."
+msgstr "Nhập để tìm 1 khách hàng"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Type to find a product..."
+msgstr "Nhập để tìm 1 sản phẩm"
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Tổng tiền thanh toán"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "UoM"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.sale_custom_form
+msgid "Update Prices"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid ""
+"VUI LÒNG GỌI SỐ <strong>0931 94 55 93</strong> ĐỂ CHÚNG TÔI KỊP THỜI KHẮC "
+"PHỤC"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Xin chân thành cảm ơn!"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "năm"
+msgstr ""
+
+#. module: sale_custom
+#: model:ir.actions.act_window,name:sale_custom.sale_custom_action
+msgid "sale_custom window"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "tháng"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Điện thoại/Zalo: 0931 94 55 93"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Điện thoại:"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Đà Nẵng, ngày"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "ĐƠN GIÁ"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid "Địa chỉ:"
+msgstr ""
+
+#. module: sale_custom
+#: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
+msgid ""
+"Địa chỉ: 71 Nguyễn Lương Bằng, Q.Liên\n"
+"                            Chiểu,TP.Đà Nẵng"
+msgstr ""
