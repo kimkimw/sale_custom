@@ -15,7 +15,7 @@
     </record>
 
     <record id="quotation_reports_menu" model="ir.actions.report">
-        <field name="name">In báo giá</field>
+        <field name="name">In phiếu giao hàng</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">sale_custom.quotation_report</field>

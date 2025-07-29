@@ -11,6 +11,18 @@
                 </xpath>
                 <xpath expr="//header" position="replace">
                     <header>
+                        <button name="%(quotation_reports_menu)d"
+                                string="In phiếu giao hàng"
+                                type="action"
+                                class="btn-primary"
+                                context="{'active_model': 'sale.order', 'active_id': active_id}"
+                        />
+                        <button name="%(quotation_reports_menu_2)d"
+                                string="In bảng báo giá"
+                                type="action"
+                                class="btn-primary"
+                                context="{'active_model': 'sale.order', 'active_id': active_id}"
+                        />
                         <field name="locked" invisible="1"/>
                         <field name="authorized_transaction_ids" invisible="1"/>
                         <button name="payment_action_capture" type="object" data-hotkey="shift+g"
@@ -331,14 +343,15 @@
                     <attribute name="optional">hide</attribute>
                 </xpath>
                 <xpath expr="//field[@name='amount_untaxed']" position="attributes">
-<!--                    <attribute name="column-invisible">1</attribute>-->
+                    <!--                    <attribute name="column-invisible">1</attribute>-->
                     <attribute name="optional">hide</attribute>
                 </xpath>
-<!--                <xpath expr="//field[@name='amount_total']" position="attributes">-->
-<!--                    <attribute name="column-invisible">1</attribute>-->
-<!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='amount_total']" position="attributes">-->
+                <!--                    <attribute name="column-invisible">1</attribute>-->
+                <!--                </xpath>-->
                 <xpath expr="//field[@name='state']" position="before">
-                    <field name="total_price_custom" widget="monetary" sum="Tổng tiền có thuế" string="Tổng tiền có thuế"/>
+                    <field name="total_price_custom" widget="monetary" sum="Tổng tiền có thuế"
+                           string="Tổng tiền có thuế"/>
                 </xpath>
             </field>
         </record>

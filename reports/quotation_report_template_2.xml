@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="quotation_report_2">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div style="page-break-before: always;">
+                    <t t-call="sale_custom.quotation_report_template_2" t-lang="doc.partner_id.lang"/>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="quotation_report_template_2">
+        <t t-call="web.basic_layout">
+            <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+            <t t-set="forced_vat"
+               t-value="doc.fiscal_position_id.foreign_vat"/> <!-- So that it appears in the footer of the report instead of the company VAT if it's set -->
+            <t t-set="lines_to_report" t-value="doc._get_order_lines_to_report()"/>
+            <div class="page"
+                 style='position:relative !important;width: 100%; height: 1130px !important;font-family: Times New Roman;font-size: 18px;'>
+                <img class="img img-responsive" src="/sale_custom/static/src/img/logo.jpg"
+                     style="width:280px; height: 280px; position: absolute;left: -15px"/>
+                <div style="position:absolute;top: 40px; width:80%;right:45px;">
+                    <h3 style=" width:100%; text-align:center; font-weight: bold;">CÔNG TY TNHH IN ẤN 43 ĐÀ NẴNG</h3>
+                    <div style="width: 85%; right: -30px;position:absolute;top: 40px;font-size: 20px;">
+                        <div style=" width:100%; text-align:left; padding: 2px">Địa chỉ: 71 Nguyễn Lương Bằng, Q.Liên
+                            Chiểu,TP.Đà Nẵng
+                        </div>
+                        <div style=" width:100%; text-align:left; padding: 2px">Email: in43danang@gmail.com | MST: 0402245105</div>
+                        <div style=" width:100%; text-align:left; padding: 2px">Điện thoại/Zalo: 0931 94 55 93</div>
+                        <div style=" width:100%; text-align:left; padding: 2px">STK: 5650194016 - Hồ Thị Bích Trâm -
+                            BIDV/CN Sông Hàn
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%; text-align:center;top: 220px;position:absolute;">
+                    <h2>
+                        <span style="font-weight: bold;">BẢNG BÁO GIÁ IN ẤN</span>
+<!--                        <div style="font-size: 16px;font-style: italic; ">(GIAO MIỄN PHÍ NỘI THÀNH ĐÀ NẴNG VỚI NHỮNG ĐƠN-->
+<!--                            HÀNG TRÊN-->
+<!--                            200.000VNĐ)-->
+<!--                        </div>-->
+                        <!--                        <div style="font-size: 18px;font-weight: bold;">(GIAO NỘI THÀNH ĐÀ NẴNG)-->
+                        <!--                        </div>-->
+                    </h2>
+                </div>
+                <div style="position:absolute; width: 100%; top: 280px;">
+                    <div style="padding-bottom:5px">
+                        <table style="border-style: hidden; width:100%;font-weight: bold;font-size: 20px;">
+                            <tbody style="line-height: 15px;border: 0;">
+                                <tr style="padding:2px;border: 0;">
+                                    <td style="width: 70%;padding:1px;border: 0;vertical-align: middle;">
+                                        Ngày:
+                                        <span t-esc="doc.order_date"/>
+                                    </td>
+                                </tr>
+                                <tr style="padding:2px;border: 0;">
+                                    <td style="width: 100%;padding:1px;border: 0;vertical-align: middle;">
+                                        Kính gửi:
+                                        <span t-esc="doc.partner_id.name"/>
+                                    </td>
+                                </tr>
+                                <tr style="padding:5px;border: 0;">
+                                    <td style="width: 100%;padding:1px;border: 0;vertical-align: middle;">
+                                        Địa chỉ:
+                                        <t t-if="doc.address_new">
+                                            <span t-esc="doc.address_new"></span>
+                                        </t>
+                                        <t t-else="">
+                                            <span t-esc="doc.partner_id.street"></span>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr style="padding:5px;border: 0;">
+                                    <td style="width: 100%;padding:1px;border: 0;vertical-align: middle;">
+                                        <div style="height:20px"></div>
+                                    </td>
+                                </tr>
+                                <tr style="padding:5px;border: 0;">
+                                    <td style="width: 100%;padding:1px;border: 0;vertical-align: middle;">
+                                        <span style="font-weight: normal;font-style: italic;">Lời đầu tiên, xin trân trọng cảm ơn quý khách hàng đã quan tâm đến sản phẩm in ấn của công ty chúng tôi.</span><br/>
+                                        <span style="font-weight: normal;font-style: italic;">In 43 Đà Nẵng xin gửi đến quý khách hàng bảng báo giá in ấn với chi tiết như sau:</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <table style="border: 1px; width: 100%;">
+                        <thead style="display: table-row-group">
+                            <tr style="font-size: 19px; background-color: #DCDDDE">
+                                <th style="vertical-align: middle;padding:3px;">TT</th>
+                                <th style="vertical-align: middle;padding:3px;">NỘI DUNG</th>
+                                <th style="vertical-align: middle;padding:3px;">QUY CÁCH</th>
+                                <th style="vertical-align: middle;padding:3px;">HÌNH THỨC</th>
+                                <th style="vertical-align: middle;padding:3px;">SỐ TỜ</th>
+<!--                                <th style="vertical-align: middle;padding:3px;">SL BỘ</th>-->
+                                <th style="vertical-align: middle;padding:3px;">ĐƠN GIÁ</th>
+                                <th style="vertical-align: middle;padding:3px;">THÀNH TIỀN</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+
+                            <t t-set="current_subtotal" t-value="0"/>
+                            <t t-set="stt" t-value="1"/>
+                            <t t-foreach="lines_to_report" t-as="line">
+                                <tr style="font-size: 18px">
+                                    <td style="text-align: center;vertical-align: middle;">
+                                        <div style="">
+                                            <span t-esc="stt"/>
+                                        </div>
+                                        <t t-set="stt" t-value="stt + 1"/>
+                                    </td>
+                                    <td style="padding:3px;text-align: center; vertical-align: middle;">
+                                        <div style="text-align: left">
+                                            <span t-field="line.name"/>
+                                        </div>
+                                    </td>
+                                    <td style="padding:3px;text-align: center; vertical-align: middle;">
+                                        <div style="">
+                                            <span t-field="line.product_template_id.name"/>
+                                        </div>
+                                    </td>
+                                    <td style="padding:3px;text-align: center; vertical-align: middle;">
+                                        <div style="">
+                                            <span t-field="line.specifications"/>
+                                        </div>
+                                    </td>
+                                    <td style="text-align: center; padding:3px; vertical-align: middle;">
+                                        <div style="">
+                                            <span t-esc="int(line.product_uom_qty)"/>
+                                        </div>
+                                    </td>
+<!--                                    <td style="text-align: center; padding:3px; vertical-align: middle;">-->
+<!--                                        <div style="width: 40px;">-->
+<!--                                            <span t-esc="int(line.paper_set)"/>-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+                                    <td style="text-align: right; padding-right:5px; vertical-align: middle;">
+                                        <div style="">
+                                            <span t-esc="'{:,}'.format(int(line.price_unit))"/>
+                                        </div>
+                                    </td>
+                                    <td style="text-align: right; padding-right:5px;vertical-align: middle;">
+                                        <div style="">
+                                            <span t-esc="'{:,}'.format(int(line.price_subtotal))"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </t>
+
+                            <tr style="border-style: solid; border-width: 2px;">
+                                <td t-attf-colspan="4" t-attf-rowspan="4"
+                                    style="text-align: left;font-size: 18px; border-right: 2px solid #000">
+                                    <div style="width:520px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        <span style="width: 100%;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+                                              t-esc="doc.note"/>
+                                    </div>
+                                </td>
+                                <td t-attf-colspan="2" style="text-align: left; padding:2px;font-weight: bold;">
+                                    Tiền hàng
+                                </td>
+                                <td style="text-align: right; padding:2px;font-weight: bold;">
+                                    <span t-esc="doc.tax_totals['formatted_amount_untaxed']"></span>
+                                </td>
+                            </tr>
+                            <tr style="border-style: solid; border-width: 2px;">
+                                <td t-attf-colspan="2" style="text-align: left; padding:2px;font-weight: bold;">
+                                    Tiền ứng trước
+                                </td>
+                                <td style="text-align: right; padding:2px;font-weight: bold;">
+                                    <span t-esc="'{:,}'.format(int(doc.advance_payment))"/>
+                                    <span>₫</span>
+                                </td>
+                            </tr>
+                            <tr style="border-style: solid; border-width: 2px;">
+                                <td t-attf-colspan="2" style="text-align: left; padding:2px;font-weight: bold;">
+                                    <t t-if="doc.is_tax_8">
+                                        <span>Thuế VAT (8%)</span>
+                                    </t>
+                                    <t t-elif="doc.is_tax_10">
+                                        <span>Thuế VAT (10%)</span>
+                                    </t>
+                                    <t t-else="">
+<!--                                        <span t-esc="doc.tax_totals"></span>-->
+                                        <span>Thuế VAT</span>
+                                    </t>
+                                </td>
+                                <td style="text-align: right; padding:2px;font-weight: bold;">
+                                    <span t-esc="'{:,}'.format(int(doc.tax_custom))"></span>
+                                    <span>₫</span>
+<!--                                    <span t-esc="doc.tax_custom"></span>-->
+                                </td>
+                            </tr>
+                            <tr style="border-style: solid; border-width: 2px;">
+                                <td t-attf-colspan="2" style="text-align: left; padding:2px;font-weight: bold;">
+                                    Tổng tiền thanh toán
+                                </td>
+                                <td style="text-align: right; padding:2px;font-weight: bold;">
+<!--                                    <t t-set="tax_totals" t-value="doc.tax_totals['amount_total']"></t>-->
+<!--                                    <t t-set="advance_payment" t-value="doc.advance_payment"></t>-->
+<!--                                    <t t-set="total" t-value="tax_totals - advance_payment"></t>-->
+<!--                                    <span t-esc="'{:,}'.format(int(total))"/>-->
+                                    <span t-esc="'{:,}'.format(int(doc.total_price_custom))"/>
+                                    <span>₫</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <div style="font-size: 20px">
+                        <div><h3><strong>Ghi chú:</strong></h3></div>
+                        <div>- Bảng báo giá chỉ áp dụng trong vòng 30 ngày kể từ ngày khách hàng nhận báo giá.</div>
+                        <div>- Bảng báo giá đã bao gồm chi phí vận chuyển nội thành Đà Nẵng.</div>
+                    </div>
+
+
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+</odoo>
