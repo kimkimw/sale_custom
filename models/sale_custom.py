@@ -20,7 +20,7 @@ class Sale_Custom(models.Model):
     address_new = fields.Char('Địa chỉ', store=True)
 
     order_date = fields.Date('Ngày đặt hàng', default=datetime.now())
-    total_price_custom = fields.Float('Tổng tiền thanh toán', compute='_compute_total_price_custom')
+    total_price_custom = fields.Float('Tổng tiền thanh toán', compute='_compute_total_price_custom',store=True)
 
     @api.onchange('is_tax_8', 'is_tax_10')
     def onchange_tax_custom(self):
@@ -35,8 +35,8 @@ class Sale_Custom(models.Model):
 
     @api.depends('order_line.price_total', 'tax_custom')
     def _compute_total_price_custom(self):
-        self.total_price_custom = sum(line.price_total for line in self.order_line) + self.tax_custom - self.advance_payment
-        #
+        for rec in self:
+            rec.total_price_custom = sum(line.price_total for line in rec.order_line) + rec.tax_custom
         # if self.is_tax_8 or self.is_tax_10:
         #     self.amount_total += self.tax_custom
         # else:
