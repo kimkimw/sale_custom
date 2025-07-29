@@ -20,6 +20,7 @@ class Sale_Custom(models.Model):
     address_new = fields.Char('Địa chỉ', store=True)
 
     order_date = fields.Date('Ngày đặt hàng', default=datetime.now())
+    total_price_custom = fields.Float('Tổng tiền thanh toán', compute='_compute_total_price_custom')
 
     @api.onchange('is_tax_8', 'is_tax_10')
     def onchange_tax_custom(self):
@@ -31,6 +32,10 @@ class Sale_Custom(models.Model):
             self.tax_custom = amount_untaxed * 0.10
         else:
             self.tax_custom = 0
+
+    @api.depends('order_line.price_total', 'tax_custom')
+    def _compute_total_price_custom(self):
+        self.total_price_custom = sum(line.price_total for line in self.order_line) + self.tax_custom - self.advance_payment
         #
         # if self.is_tax_8 or self.is_tax_10:
         #     self.amount_total += self.tax_custom
@@ -40,17 +45,10 @@ class Sale_Custom(models.Model):
         # self.tax_totals['amount_total'] = self.amount_total
         # self.tax_totals['amount_untaxed'] = self.amount_total
 
-    def _get_tax_totals_json(self):
-        res = super()._get_tax_totals_json()
-        for order in self:
-            if res and isinstance(res, dict):
-                res['amount_total'] = order.amount_untaxed + order.tax_custom
-        return res
-
     @api.onchange('partner_id')
     def _onchange_partner_id_address(self):
-        for rec in self:
-            rec.address_new = rec.partner_id.street
+        # for rec in self:
+            self.address_new = self.partner_id.street
 
     @api.onchange('partner_id')
     def onchange1(self):

@@ -164,16 +164,21 @@
                             </tr>
                             <tr style="border-style: solid; border-width: 2px;">
                                 <td t-attf-colspan="2" style="text-align: left; padding:2px;font-weight: bold;">
-                                    <t t-if="doc.tax_totals['groups_by_subtotal']"
-                                       t-esc="doc.tax_totals['groups_by_subtotal']['Số tiền trước thuế'][0]['tax_group_name']"/>
+                                    <t t-if="doc.is_tax_8">
+                                        <span>Thuế VAT (8%)</span>
+                                    </t>
+                                    <t t-elif="doc.is_tax_10">
+                                        <span>Thuế VAT (10%)</span>
+                                    </t>
                                     <t t-else="">
 <!--                                        <span t-esc="doc.tax_totals"></span>-->
                                         <span>Thuế VAT</span>
                                     </t>
                                 </td>
-                                <td style="text-align: right; padding:2px;font-weòngight: bold;">
-                                    <span t-if="doc.tax_totals['groups_by_subtotal']"
-                                          t-esc="doc.tax_totals['groups_by_subtotal']['Số tiền trước thuế'][0]['formatted_tax_group_amount']"></span>
+                                <td style="text-align: right; padding:2px;font-weight: bold;">
+                                    <span t-esc="'{:,}'.format(int(doc.tax_custom))"></span>
+                                    <span>₫</span>
+<!--                                    <span t-esc="doc.tax_custom"></span>-->
                                 </td>
                             </tr>
                             <tr style="border-style: solid; border-width: 2px;">
@@ -181,10 +186,11 @@
                                     Tổng tiền thanh toán
                                 </td>
                                 <td style="text-align: right; padding:2px;font-weight: bold;">
-                                    <t t-set="tax_totals" t-value="doc.tax_totals['amount_total']"></t>
-                                    <t t-set="advance_payment" t-value="doc.advance_payment"></t>
-                                    <t t-set="total" t-value="tax_totals - advance_payment"></t>
-                                    <span t-esc="'{:,}'.format(int(total))"/>
+<!--                                    <t t-set="tax_totals" t-value="doc.tax_totals['amount_total']"></t>-->
+<!--                                    <t t-set="advance_payment" t-value="doc.advance_payment"></t>-->
+<!--                                    <t t-set="total" t-value="tax_totals - advance_payment"></t>-->
+<!--                                    <span t-esc="'{:,}'.format(int(total))"/>-->
+                                    <span t-esc="'{:,}'.format(int(doc.total_price_custom))"/>
                                     <span>₫</span>
                                 </td>
                             </tr>

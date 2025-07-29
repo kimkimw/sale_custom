@@ -235,6 +235,7 @@
                     </group>
                     <group class="oe_subtotal_footer" colspan="2" name="sale_total">
                         <field name="advance_payment" colspan="2"/>
+                        <field name="total_price_custom" colspan="2" class="h1" widget="monetary"/>
                         <field name="tax_totals" widget="account-tax-totals-field" nolabel="1" colspan="2"
                                readonly="1"/>
                     </group>
@@ -247,6 +248,7 @@
 
                                placeholder="Type to find a customer..."/>
                         <field name="address_new"/>
+                        <field name="address" invisible="address_new != False" string="Địa chỉ mặc định"/>
                         <field name="phone_number"/>
                         <field name="partner_invoice_id"
                                groups="account.group_delivery_invoice_address"
