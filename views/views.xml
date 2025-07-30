@@ -159,7 +159,8 @@
                                widget="sol_product_many2one"
                                placeholder="Type to find a product..."/>
                         <field name="specifications" optional="show"/>
-                        <field name="unit_type" optional="show"/>
+<!--                        <field name="unit_type" optional="show"/>-->
+                        <field name="unit_type_selection" optional="show"/>
                         <!--                        <field name="remark" optional="show"/>-->
                         <field name="name" widget="section_and_note_text" optional="show"/>
                         <field name="analytic_distribution" widget="analytic_distribution"
