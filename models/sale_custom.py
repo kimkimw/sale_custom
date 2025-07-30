@@ -5,6 +5,7 @@ from email.policy import default
 from reportlab.graphics.transform import inverse
 
 from odoo import models, fields, api
+from odoo.addons.test_inherit.models import mother2
 
 
 class Sale_Custom(models.Model):
@@ -20,7 +21,7 @@ class Sale_Custom(models.Model):
     address_new = fields.Char('Địa chỉ', store=True)
 
     order_date = fields.Date('Ngày đặt hàng', default=datetime.now())
-    total_price_custom = fields.Float('Tổng tiền thanh toán', compute='_compute_total_price_custom',store=True)
+    total_price_custom = fields.Float('Tổng tiền thanh toán', compute='_compute_total_price_custom', store=True)
 
     is_print_mark = fields.Boolean('Con dấu')
 
@@ -58,7 +59,7 @@ class Sale_Custom(models.Model):
     @api.onchange('partner_id')
     def _onchange_partner_id_address(self):
         # for rec in self:
-            self.address_new = self.partner_id.street
+        self.address_new = self.partner_id.street
 
     @api.onchange('partner_id')
     def onchange1(self):
@@ -155,6 +156,8 @@ class Sale_Order_Line(models.Model):
     paper_qty = fields.Integer(string='Số tờ', default=1, store=True)
     remark = fields.Char(string='Diễn giải', store=True)
     unit_type = fields.Char('Đơn vị tính', related='product_template_id.unit_type')
+    unit_type_selection = fields.Selection(
+        [('1', 'Cái'), ('2', 'Tờ'), ('3', 'Cuốn'), ('4', 'M2'), ('5', 'Quyển'), ('6', 'Bộ')], string='Đơn vị tính', )
 
     @api.onchange('paper_set', 'paper_qty')
     def onchange_qty(self):
