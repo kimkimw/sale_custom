@@ -20,8 +20,10 @@
                  style='position:relative !important;width: 100%; height: 1130px !important;font-family: Times New Roman;font-size: 18px;'>
                 <img class="img img-responsive" src="/sale_custom/static/src/img/logo.jpg"
                      style="width:280px; height: 280px; position: absolute;left: -15px"/>
-                <img class="img img-responsive" src="/sale_custom/static/src/img/con_dau.png"
-                     style="width:200px; height: 200px; position: absolute;right: 10px; top: 260px;"/>
+                <t t-if="doc.is_print_mark">
+                    <img class="img img-responsive" src="/sale_custom/static/src/img/con_dau.png"
+                         style="width:180px; height: 180px; position: absolute;right: 30px; top: 270px;"/>
+                </t>
                 <div style="position:absolute;top: 40px; width:80%;right:45px;">
                     <h3 style=" width:100%; text-align:center; font-weight: bold;">CÔNG TY TNHH IN ẤN 43 ĐÀ NẴNG</h3>
                     <div style="width: 85%; right: -30px;position:absolute;top: 40px;font-size: 20px;">

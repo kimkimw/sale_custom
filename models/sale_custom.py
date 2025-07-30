@@ -22,6 +22,8 @@ class Sale_Custom(models.Model):
     order_date = fields.Date('Ngày đặt hàng', default=datetime.now())
     total_price_custom = fields.Float('Tổng tiền thanh toán', compute='_compute_total_price_custom',store=True)
 
+    is_print_mark = fields.Boolean('Con dấu')
+
     @api.onchange('is_tax_8', 'is_tax_10')
     def onchange_tax_custom(self):
         amount_untaxed = sum(line.price_total for line in self.order_line)
