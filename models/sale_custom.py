@@ -24,6 +24,14 @@ class Sale_Custom(models.Model):
 
     is_print_mark = fields.Boolean('Con dấu')
 
+    def confirm_order_custom(self):
+        for rec in self:
+            rec.state = 'sale'
+
+    def un_confirm_order(self):
+        for rec in self:
+            rec.state = 'draft'
+
     @api.onchange('is_tax_8', 'is_tax_10')
     def onchange_tax_custom(self):
         amount_untaxed = sum(line.price_total for line in self.order_line)
