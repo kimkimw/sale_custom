@@ -15,28 +15,6 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-
-#. module: sale
-#. odoo-python
-#: code:addons/sale/models/sale_order.py:0
-#: model:ir.model.fields.selection,name:sale.selection__product_document__attached_on__quotation
-#: model:ir.model.fields.selection,name:sale.selection__sale_order__state__draft
-#: model:ir.model.fields.selection,name:sale.selection__sale_report__state__draft
-#: model_terms:ir.ui.view,arch_db:sale.product_document_search
-#, python-format
-msgid "Quotation"
-msgstr "Đã thanh toán"
-
-
-#. module: sale
-#. odoo-python
-#: code:addons/sale/models/sale_order.py:0
-#: model:ir.model.fields.selection,name:sale.selection__sale_order__state__sale
-#: model:ir.model.fields.selection,name:sale.selection__sale_report__state__sale
-#, python-format
-msgid "Sales Order"
-msgstr "Chưa thanh toán"
-
 #. module: sale_custom
 #: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
 msgid ""
@@ -48,6 +26,26 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:sale_custom.quotation_report_template
 msgid "(Ký ghi rõ họ tên)"
 msgstr ""
+
+#. module: sale
+#. odoo-python
+#: code:addons/sale/models/sale_order.py:0
+#: model:ir.model.fields.selection,name:sale.selection__sale_order__state__sale
+#, python-format
+msgid "Sales Order"
+msgstr "Đã thanh toán"
+
+
+#. module: sale
+#. odoo-python
+#: code:addons/sale/models/sale_order.py:0
+#: model:ir.model.fields.selection,name:sale.selection__product_document__attached_on__quotation
+#: model:ir.model.fields.selection,name:sale.selection__sale_order__state__draft
+#: model:ir.model.fields.selection,name:sale.selection__sale_report__state__draft
+#: model_terms:ir.ui.view,arch_db:sale.product_document_search
+#, python-format
+msgid "Quotation"
+msgstr "Chưa thanh toán"
 
 #. module: sale_custom
 #: model:ir.actions.report,print_report_name:sale_custom.quotation_reports_menu
@@ -255,8 +253,7 @@ msgstr ""
 #. module: sale_custom
 #: model:ir.model,name:sale_custom.model_sale_order
 msgid "Sales Order"
-msgstr "Chưa thanh toán"
-
+msgstr "Đơn bán hàng"
 
 #. module: sale_custom
 #: model:ir.model,name:sale_custom.model_sale_order_line

@@ -2,8 +2,6 @@
 from datetime import datetime
 from email.policy import default
 
-from reportlab.graphics.transform import inverse
-
 from odoo import models, fields, api
 
 
@@ -13,44 +11,12 @@ class Sale_Custom(models.Model):
 
     phone_number = fields.Char('Số điện thoại', related='partner_id.phone')
     advance_payment = fields.Monetary('Tiền ứng trước')
-    tax_custom = fields.Float('Tổng Thuế')
-    is_tax_8 = fields.Boolean('Thuế 8%')
-    is_tax_10 = fields.Boolean('Thuế 10%')
-    address = fields.Char('Địa chỉ', related='partner_id.street')
-    address_new = fields.Char('Địa chỉ', store=True)
 
     order_date = fields.Date('Ngày đặt hàng', default=datetime.now())
 
-    @api.onchange('is_tax_8', 'is_tax_10')
-    def onchange_tax_custom(self):
-        amount_untaxed = sum(line.price_total for line in self.order_line)
-
-        if self.is_tax_8 and not self.is_tax_10:
-            self.tax_custom = amount_untaxed * 0.08
-        elif self.is_tax_10 and not self.is_tax_8:
-            self.tax_custom = amount_untaxed * 0.10
-        else:
-            self.tax_custom = 0
-        #
-        # if self.is_tax_8 or self.is_tax_10:
-        #     self.amount_total += self.tax_custom
-        # else:
-        #     self.amount_total = sum(line.price_total for line in self.order_line)
-        # self.tax_totals['amount_untaxed'] = self.amount_total
-        # self.tax_totals['amount_total'] = self.amount_total
-        # self.tax_totals['amount_untaxed'] = self.amount_total
-
-    def _get_tax_totals_json(self):
-        res = super()._get_tax_totals_json()
-        for order in self:
-            if res and isinstance(res, dict):
-                res['amount_total'] = order.amount_untaxed + order.tax_custom
-        return res
-
-    @api.onchange('partner_id')
-    def _onchange_partner_id_address(self):
-        for rec in self:
-            rec.address_new = rec.partner_id.street
+    # @api.onchange('partner_id')
+    # def _compute_phone(self):
+    #     self.phone_number = self.partner_id.phone
 
     @api.onchange('partner_id')
     def onchange1(self):

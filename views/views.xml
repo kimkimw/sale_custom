@@ -6,9 +6,6 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//div[@class='oe_chatter']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
                 <xpath expr="//header" position="replace">
                     <header>
                         <field name="locked" invisible="1"/>
@@ -38,10 +35,11 @@
 <!--                                invisible="state != 'draft' or invoice_count &gt;= 1"-->
 <!--                                context="{'proforma': True, 'validate_analytic': True}"/>-->
                         <button name="action_confirm" id="action_confirm" data-hotkey="q"
-                                string="Xác nhận chưa thanh toán" class="btn-primary" type="object" context="{'validate_analytic': True}"
+                                string="Xác nhận đã thanh toán" class="btn-primary" type="object"
+                                context="{'validate_analytic': True}"
                                 invisible="state != 'sent'"/>
                         <button name="action_confirm" data-hotkey="q"
-                                string="Xác nhận chưa thanh toán" type="object" context="{'validate_analytic': True}"
+                                string="Xác nhận đã thanh toán" type="object" context="{'validate_analytic': True}"
                                 invisible="state != 'draft'"/>
 <!--                        <button name="action_quotation_send" id="send_proforma" type="object"-->
 <!--                                string="Send PRO-FORMA Invoice" groups="sale.group_proforma_sales"-->
@@ -58,7 +56,7 @@
                         <button name="action_cancel" type="object" string="Hủy"
                                 invisible="state not in ['draft', 'sent', 'sale'] or not id or locked" data-hotkey="x"/>
                         <button name="action_draft" invisible="state != 'cancel'" type="object"
-                                string="Đặt lại thành đã thanh toán" data-hotkey="w"/>
+                                string="Đặt lại thành chưa thanh toán" data-hotkey="w"/>
                         <t groups="sale.group_auto_done_setting">
                             <button name="action_lock" type="object" string="Lock"
                                     help="If the sale is locked, you can not modify it anymore. However, you will still be able to invoice or deliver."
@@ -134,8 +132,8 @@
                                placeholder="Type to find a product..."/>
                         <field name="specifications" optional="show"/>
                         <field name="unit_type" optional="show"/>
-<!--                        <field name="remark" optional="show"/>-->
-                        <field name="name" widget="section_and_note_text" optional="show"/>
+                        <field name="remark" optional="show"/>
+                        <field name="name" widget="section_and_note_text" optional="show" column_invisible="True"/>
                         <field name="analytic_distribution" widget="analytic_distribution"
                                optional="hide"
                                groups="analytic.group_analytic_accounting"
@@ -229,11 +227,6 @@
                 <!--                </xpath>-->
                 <xpath expr="//group[@name='sale_total']" position="replace">
                     <group class="oe_subtotal_footer" colspan="2" name="sale_total">
-                        <field name="is_tax_8"/>
-                        <field name="is_tax_10"/>
-                        <field name="tax_custom"/>
-                    </group>
-                    <group class="oe_subtotal_footer" colspan="2" name="sale_total">
                         <field name="advance_payment" colspan="2"/>
                         <field name="tax_totals" widget="account-tax-totals-field" nolabel="1" colspan="2"
                                readonly="1"/>
@@ -244,9 +237,8 @@
                     <group name="partner_details">
                         <field name="partner_id"
                                widget="res_partner_many2one"
-
-                               placeholder="Type to find a customer..."/>
-                        <field name="address_new"/>
+                               context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                               placeholder="Type to find a customer..." readonly="state in ['cancel', 'sale']"/>
                         <field name="phone_number"/>
                         <field name="partner_invoice_id"
                                groups="account.group_delivery_invoice_address"
