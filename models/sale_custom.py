@@ -25,6 +25,10 @@ class Sale_Custom(models.Model):
 
     is_print_mark = fields.Boolean('Con dấu')
 
+    def validate_payment(self):
+        for rec in self:
+            rec.state = 'draft'
+
     def confirm_order_custom(self):
         for rec in self:
             rec.state = 'sale'

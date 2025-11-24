@@ -339,6 +339,9 @@
                 <!--                <xpath expr="//field[@name='create_date']" position="attributes">-->
                 <!--                    <attribute name="optional">hide</attribute>-->
                 <!--                </xpath>-->
+                <xpath expr="//header" position="inside">
+                    <button name="validate_payment" type="object" class="btn-primary" display="always" string="Xác Nhận Thanh Toán"/>
+                </xpath>
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="phone_number"/>
                 </xpath>
