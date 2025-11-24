@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="sale_order_custom_1" name="Phiếu Chưa Thanh Toaán" sequence="12" action="action_sale_order_custom_1"
+              parent="sale.sale_menu_root"/>
+</odoo>

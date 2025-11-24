@@ -31,6 +31,7 @@ Long description of module's purpose
         'views/res_partner_views_new.xml',
         'views/views.xml',
         'views/templates.xml',
+        'views/menu.xml',
 
     ],
     'installable': True,
