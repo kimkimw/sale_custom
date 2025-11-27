@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
+from datetime import datetime, date
 from email.policy import default
 
 from reportlab.graphics.transform import inverse
@@ -20,7 +20,7 @@ class Sale_Custom(models.Model):
     address = fields.Char('Địa chỉ', related='partner_id.street')
     address_new = fields.Char('Địa chỉ', store=True)
 
-    order_date = fields.Date('Ngày đặt hàng', default=datetime.now())
+    order_date = fields.Date('Ngày đặt hàng', default=fields.Date.today)
     total_price_custom = fields.Float('Tổng tiền thanh toán', compute='_compute_total_price_custom', store=True)
 
     is_print_mark = fields.Boolean('Con dấu')
