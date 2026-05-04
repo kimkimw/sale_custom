@@ -22,17 +22,17 @@
                     <field name="sequence" widget="handle"/>
                     <field name="name" string="STT" optional="show" readonly="1"/>
                     <field name="date" string="Ngày"/>
-                    <field name="partner_id" string="Tên Khách Hàng"
+                    <field name="partner_id" string="Tên Khách Hàng" readonly="state != 'draft'"
                            options="{'no_create': True}"/>
-                    <field name="product_id" string="Sản phẩm"
+                    <field name="product_id" string="Sản phẩm" readonly="state != 'draft'"
                            domain="[('sale_ok', '=', True)]"
                            options="{'no_create': True}"/>
-                    <field name="form_type" string="Hình thức"/>
-                    <field name="description" string="Diễn giải"/>
-                    <field name="quantity" string="Số lượng" sum="Tổng số lượng"/>
-                    <field name="turn_count" string="Số lượt" sum="Tổng lượt"/>
-                    <field name="unit_price" string="Đơn giá" widget="monetary"/>
-                    <field name="total_amount" string="Thành tiền"
+                    <field name="form_type" string="Hình thức" readonly="state != 'draft'"/>
+                    <field name="description" string="Diễn giải" readonly="state != 'draft'"/>
+                    <field name="quantity" string="Số lượng" sum="Tổng số lượng" readonly="state != 'draft'"/>
+                    <field name="turn_count" string="Số lượt" sum="Tổng lượt" readonly="state != 'draft'"/>
+                    <field name="unit_price" string="Đơn giá" widget="monetary" readonly="state != 'draft'"/>
+                    <field name="total_amount" string="Thành tiền" readonly="state != 'draft'"
                            widget="monetary" sum="Tổng doanh thu"/>
                     <field name="note" string="Ghi chú"/>
                     <field name="state" optional="show" widget="badge"/>
