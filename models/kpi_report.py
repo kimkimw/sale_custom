@@ -48,7 +48,7 @@ class SaleKpiReport(models.Model):
         ('draft', 'Nháp'),
         ('confirmed', 'Đã xác nhận'),
         ('wrong', 'Sai đơn hàng'),
-    ], string='Trạng thái', default='confirm', tracking=True, copy=False)
+    ], string='Trạng thái', default='confirmed', tracking=True, copy=False)
 
     user_id = fields.Many2one(
         'res.users', string='Nhân viên',
@@ -88,8 +88,4 @@ class SaleKpiReport(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        for vals in vals_list:
-            if vals.get('name', _('Mới')) == _('Mới'):
-                vals['name'] = self.env['ir.sequence'].next_by_code(
-                    'sale.kpi.report') or _('Mới')
         return super().create(vals_list)

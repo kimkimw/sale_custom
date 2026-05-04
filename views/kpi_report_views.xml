@@ -2,13 +2,6 @@
 <odoo>
     <data>
 
-        <record id="seq_sale_kpi_report" model="ir.sequence">
-            <field name="name">Sale KPI Report</field>
-            <field name="code">sale.kpi.report</field>
-            <field name="prefix">KPI/</field>
-            <field name="padding">5</field>
-            <field name="company_id" eval="False"/>
-        </record>
 
         <record id="view_sale_kpi_report_tree" model="ir.ui.view">
             <field name="name">sale.kpi.report.tree</field>
@@ -27,7 +20,7 @@
                            domain="[('sale_ok', '=', True)]"
                            options="{'no_create': True}"/>
                     <field name="form_type" string="Hình thức" readonly="state != 'draft'" optional="hide"/>
-                    <field name="description" string="Diễn giải" readonly="state != 'draft'"/>
+                    <field name="description" string="Diễn giải" readonly="state != 'draft'" width="500px"/>
                     <field name="quantity" string="Số lượng" sum="Tổng số lượng" readonly="state != 'draft'"/>
                     <field name="turn_count" string="Số lượt" sum="Tổng lượt" readonly="state != 'draft'"/>
                     <field name="unit_price" string="Đơn giá" widget="monetary" readonly="state != 'draft'"/>
