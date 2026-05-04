@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 
 class SaleKpiReport(models.Model):
@@ -55,6 +55,12 @@ class SaleKpiReport(models.Model):
         default=lambda self: self.env.user, required=True)
 
     sale_order_id = fields.Many2one('sale.order', string='Đơn hàng liên quan')
+
+    def unlink(self):
+        if self.state != 'draft':
+            raise ValidationError('Không thể xóa dòng đã xác nhận hoặc sai')
+        return super().unlink()
+
 
     @api.depends('quantity', 'unit_price')
     def _compute_total_amount(self):
