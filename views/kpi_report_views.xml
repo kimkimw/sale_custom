@@ -21,7 +21,7 @@
                       decoration-muted="state == 'draft'">
                     <field name="sequence" widget="handle"/>
                     <field name="name" string="STT" optional="show" readonly="1"/>
-                    <field name="date" string="Ngày" readonly="state != 'draft'" options="hide"/>
+                    <field name="date" string="Ngày" readonly="state != 'draft'" optional="hide"/>
                     <field name="partner_id" string="Tên Khách Hàng" readonly="state != 'draft'"/>
                     <field name="product_id" string="Sản phẩm" readonly="state != 'draft'"
                            domain="[('sale_ok', '=', True)]"
