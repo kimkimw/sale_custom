@@ -21,13 +21,13 @@
                       decoration-muted="state == 'draft'">
                     <field name="sequence" widget="handle"/>
                     <field name="name" string="STT" optional="show" readonly="1"/>
-                    <field name="date" string="Ngày" readonly="state != 'draft'"/>
+                    <field name="date" string="Ngày" readonly="state != 'draft'" options="hide"/>
                     <field name="partner_id" string="Tên Khách Hàng" readonly="state != 'draft'"
                            options="{'no_create': True}"/>
                     <field name="product_id" string="Sản phẩm" readonly="state != 'draft'"
                            domain="[('sale_ok', '=', True)]"
                            options="{'no_create': True}"/>
-                    <field name="form_type" string="Hình thức" readonly="state != 'draft'"/>
+                    <field name="form_type" string="Hình thức" readonly="state != 'draft'" options="hide"/>
                     <field name="description" string="Diễn giải" readonly="state != 'draft'"/>
                     <field name="quantity" string="Số lượng" sum="Tổng số lượng" readonly="state != 'draft'"/>
                     <field name="turn_count" string="Số lượt" sum="Tổng lượt" readonly="state != 'draft'"/>
@@ -37,8 +37,8 @@
                     <field name="note" string="Ghi chú"/>
                     <field name="state" optional="show" widget="badge"/>
                     <field name="currency_id" column_invisible="True"/>
-                    <field name="create_uid" readonly="1" string="Người tạo"/>
-                    <field name="write_uid" readonly="1" string="Người chỉnh sửa cuối cùng"/>
+                    <field name="create_uid" readonly="1" string="Người tạo" options="hide"/>
+                    <field name="write_uid" readonly="1" string="Người chỉnh sửa cuối cùng" options="hide"/>
                     <button name="action_confirm" type="object" groups="base.group_system"
                             string="Xác nhận" icon="fa-check"
                             class="btn-success"

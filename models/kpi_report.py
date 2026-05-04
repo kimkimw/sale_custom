@@ -48,7 +48,7 @@ class SaleKpiReport(models.Model):
         ('draft', 'Nháp'),
         ('confirmed', 'Đã xác nhận'),
         ('wrong', 'Sai đơn hàng'),
-    ], string='Trạng thái', default='draft', tracking=True, copy=False)
+    ], string='Trạng thái', default='confirm', tracking=True, copy=False)
 
     user_id = fields.Many2one(
         'res.users', string='Nhân viên',
