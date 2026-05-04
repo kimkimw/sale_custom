@@ -2,4 +2,11 @@
 <odoo>
     <menuitem id="sale_order_custom_1" name="Phiếu Chưa Thanh Toán" sequence="12" action="action_sale_order_custom_1"
               parent="sale.sale_menu_root"/>
+
+    <menuitem id="menu_sale_kpi_report"
+              name="Báo cáo công việc (KPI)"
+              groups="base.group_user"
+              sequence="20"
+              action="action_sale_kpi_report"
+              parent="sale.sale_menu_root"/>
 </odoo>
