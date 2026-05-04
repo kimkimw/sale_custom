@@ -15,7 +15,8 @@ class SaleKpiReport(models.Model):
     partner_id = fields.Many2one('res.partner', string='Tên Khách Hàng', required=True)
     partner_phone = fields.Char('Số điện thoại', related='partner_id.phone', store=True)
 
-    product_id = fields.Many2one('product.product', string='Sản phẩm', required=True)
+    product_id = fields.Many2one('product.product', string='Sản phẩm', required=False)
+    product_ids = fields.Many2many('product.product', string='Sản phẩm', required=False)
     product_template_id = fields.Many2one(
         'product.template', string='Sản phẩm', related='product_id.product_tmpl_id', store=True)
 
@@ -48,7 +49,7 @@ class SaleKpiReport(models.Model):
         ('draft', 'Nháp'),
         ('confirmed', 'Đã xác nhận'),
         ('wrong', 'Sai đơn hàng'),
-    ], string='Trạng thái', default='confirmed', tracking=True, copy=False)
+    ], string='Trạng thái', default='draft', tracking=True, copy=False)
 
     user_id = fields.Many2one(
         'res.users', string='Nhân viên',
