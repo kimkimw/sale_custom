@@ -37,6 +37,8 @@
                     <field name="note" string="Ghi chú"/>
                     <field name="state" optional="show" widget="badge"/>
                     <field name="currency_id" column_invisible="True"/>
+                    <field name="create_uid" readonly="1" string="Người tạo"/>
+                    <field name="write_uid" readonly="1" string="Người chỉnh sửa cuối cùng"/>
                     <button name="action_confirm" type="object" groups="base.group_system"
                             string="Xác nhận" icon="fa-check"
                             class="btn-success"
