@@ -57,9 +57,14 @@ class SaleKpiReport(models.Model):
 
     sale_order_id = fields.Many2one('sale.order', string='Đơn hàng liên quan')
 
+    product_categ_ids = fields.Many2many('product.categ',string='Hình thức')
+
     def unlink(self):
+        if not self.env.user.has_group('base.group_system'):
+            raise ValidationError("Bạn không có quyền xóa")
         if self.state != 'draft':
             raise ValidationError('Không thể xóa dòng đã xác nhận hoặc sai')
+
         return super().unlink()
 
 
@@ -89,4 +94,8 @@ class SaleKpiReport(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('name', _('Mới')) == _('Mới'):
+                vals['name'] = self.env['ir.sequence'].next_by_code(
+                    'sale.kpi.report') or _('Mới')
         return super().create(vals_list)

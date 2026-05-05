@@ -9,4 +9,10 @@
               sequence="20"
               action="action_sale_kpi_report"
               parent="sale.sale_menu_root"/>
+
+    <menuitem id="menu_product_categ" groups="base.group_no_one"
+              name="product categ"
+              sequence="50"
+              action="action_product_categ"
+              parent="sale.sale_menu_root"/>
 </odoo>

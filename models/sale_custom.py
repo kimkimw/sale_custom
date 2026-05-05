@@ -162,7 +162,38 @@ class Sale_Order_Line(models.Model):
     unit_type = fields.Char('Đơn vị tính', related='product_template_id.unit_type')
     unit_type_selection = fields.Selection(
         [('1', 'Cái'), ('2', 'Tờ'), ('3', 'Cuốn'), ('4', 'M2'), ('5', 'Quyển'), ('6', 'Bộ')], string='Đơn vị tính', )
+    worker_id = fields.Many2one('res.users', string='Người phụ trách')
+    kpi_id = fields.Many2one('sale.kpi.report')
 
+    def action_create_kpi(self):
+        categ_map = {
+            'f1': 'Photo TĐ 1 mặt',
+            'f2': 'Photo TĐ 2 mặt',
+            'i1': 'In TĐ 1 mặt',
+            'i2': 'In TĐ 2 mặt',
+            'i3': 'In màu 1 mặt',
+            'i4': 'In màu 2 mặt',
+        }
+
+        categ_name = categ_map.get(self.specifications)
+
+        categ_ids = []
+        if categ_name:
+            categ = self.env['product.categ'].search([('name', '=', categ_name)], limit=1)
+            if categ:
+                categ_ids = [(4, categ.id)]
+
+        kpi_id = self.env['sale.kpi.report'].sudo().create({
+            'partner_id': self.order_id.partner_id.id,
+            'product_ids': [(4, self.product_id.id)],
+            'description': self.name,
+            'quantity': self.product_uom_qty,
+            'unit_price': self.price_unit,
+            'user_id': self.worker_id.id,
+            'product_categ_ids': categ_ids,
+        })
+
+        self.kpi_id = kpi_id
     @api.onchange('paper_set', 'paper_qty')
     def onchange_qty(self):
         self.write({

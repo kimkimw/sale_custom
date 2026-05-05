@@ -22,11 +22,13 @@ Long description of module's purpose
 
     # always loaded
     'data': [
+        'data/data.xml',
+        'security/ir.model.access.csv',
         'reports/quotation_report.xml',
         'reports/quotation_report_template.xml',
         'reports/quotation_report_2.xml',
         'reports/quotation_report_template_2.xml',
-        'security/ir.model.access.csv',
+        'views/product_categ_views.xml',
         'views/product_template_view.xml',
         'views/res_partner_views_new.xml',
         'views/views.xml',

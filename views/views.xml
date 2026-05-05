@@ -163,6 +163,10 @@
                         <field name="unit_type_selection" optional="show"/>
                         <!--                        <field name="remark" optional="show"/>-->
                         <field name="name" widget="section_and_note_text" optional="show"/>
+                        <field name="kpi_id" column_invisible="1"/>
+                        <field name="worker_id" optional="show"/>
+                        <button name="action_create_kpi" string="Tạo KPI" type="object" class="btn-primary" invisible="kpi_id"/>
+
                         <field name="analytic_distribution" widget="analytic_distribution"
                                optional="hide"
                                groups="analytic.group_analytic_accounting"

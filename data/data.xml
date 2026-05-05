@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <record id="categ_1" model="product.categ">
+            <field name="name">In màu 1 mặt</field>
+        </record>
+
+        <record id="categ_2" model="product.categ">
+            <field name="name">In màu 2 mặt</field>
+        </record>
+
+        <record id="categ_3" model="product.categ">
+            <field name="name">Photo TĐ 1 mặt</field>
+        </record>
+
+        <record id="categ_4" model="product.categ">
+            <field name="name">Photo TĐ 2 mặt</field>
+        </record>
+
+        <record id="categ_5" model="product.categ">
+            <field name="name">In TĐ 1 mặt</field>
+        </record>
+
+        <record id="categ_6" model="product.categ">
+            <field name="name">In TĐ 2 mặt</field>
+        </record>
+
+        <record id="categ_7" model="product.categ">
+            <field name="name">In quảng cáo</field>
+        </record>
+
+        <record id="categ_8" model="product.categ">
+            <field name="name">In bạt</field>
+        </record>
+
+        <record id="categ_9" model="product.categ">
+            <field name="name">Khác</field>
+        </record>
+
+
+    </data>
+</odoo>

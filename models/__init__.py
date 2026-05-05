@@ -2,4 +2,4 @@
 
 from . import sale_custom
 from . import res_partner, product_template
-from . import kpi_report
+from . import kpi_report, product_categ
