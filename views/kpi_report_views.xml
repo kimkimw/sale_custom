@@ -25,7 +25,7 @@
                     <field name="product_categ_ids" widget="many2many_tags" string="Hình thức" required="1"
                            readonly="state != 'draft'" options="{'no_create': True}"/>
                     <field name="quantity" string="Số lượng" sum="Tổng số lượng" readonly="state != 'draft'" required="1"/>
-                    <field name="categ_count" string="Số lượt" sum="Tổng số lượt" readonly="state != 'draft'"/>
+                    <field name="categ_count" string="Số lượt" sum="Tổng số lượt" readonly="1"/>
                     <field name="unit_price" string="Đơn giá" readonly="state != 'draft'" required="1"/>
                     <field name="total_amount" string="Thành tiền" readonly="1"
                             sum="Tổng doanh thu"/>
