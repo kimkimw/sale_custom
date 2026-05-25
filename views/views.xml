@@ -48,7 +48,8 @@
 
                         <button name="action_unlock" type="object" string="Unlock"
                                 invisible="not locked" groups="sales_team.group_sale_manager"/>
-                        <button name="action_draft" invisible="state != 'cancel'" type="object" groups="base.group_system"
+                        <button name="action_draft" invisible="state != 'cancel'" type="object"
+                                groups="base.group_system"
                                 string="Đặt lại thành đã thanh toán" data-hotkey="w"/>
                         <t groups="sale.group_auto_done_setting">
                             <button name="action_lock" type="object" string="Lock"
@@ -129,8 +130,8 @@
                         <!--                        <field name="remark" optional="show"/>-->
                         <field name="name" widget="section_and_note_text" optional="show"/>
                         <field name="kpi_id" column_invisible="1"/>
-<!--                        <field name="worker_id" optional="show"/>-->
-<!--                        <button name="action_create_kpi" string="Tạo KPI" type="object" class="btn-primary" invisible="kpi_id"/>-->
+                        <!--                        <field name="worker_id" optional="show"/>-->
+                        <!--                        <button name="action_create_kpi" string="Tạo KPI" type="object" class="btn-primary" invisible="kpi_id"/>-->
 
                         <field name="analytic_distribution" widget="analytic_distribution"
                                optional="hide"
@@ -309,7 +310,8 @@
                 <!--                    <attribute name="optional">hide</attribute>-->
                 <!--                </xpath>-->
                 <xpath expr="//header" position="inside">
-                    <button name="validate_payment" groups="base.group_system" type="object" class="btn-primary" display="always" string="Xác Nhận Thanh Toán"/>
+                    <button name="validate_payment" groups="base.group_system" type="object" class="btn-primary"
+                            display="always" string="Xác Nhận Thanh Toán"/>
                 </xpath>
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="phone_number"/>
@@ -318,9 +320,6 @@
                     <field name="order_date"/>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="attributes">
-                    <attribute name="optional">hide</attribute>
-                </xpath>
-                <xpath expr="//field[@name='user_id']" position="attributes">
                     <attribute name="optional">hide</attribute>
                 </xpath>
                 <xpath expr="//field[@name='activity_ids']" position="attributes">
@@ -412,6 +411,12 @@
 
             </field>
         </record>
+        <record id="sale.action_quotations" model="ir.actions.act_window">
+            <field name="context">{}</field>
+        </record>
+        <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+            <field name="context">{}</field>
+        </record>
 
 
         <record model="ir.actions.act_window" id="sale_custom_action">
@@ -424,7 +429,7 @@
             <field name="name">Phiếu Chưa Thanh Toán</field>
             <field name="res_model">sale.order</field>
             <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
-            <field name="domain">[('state','=','sale')]</field>
+            <field name="domain">[('state', '=', 'sale')]</field>
 
         </record>
 
