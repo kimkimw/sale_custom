@@ -14,103 +14,38 @@
             <field name="model">sale.kpi.report</field>
             <field name="arch" type="xml">
                 <tree string="BÁO CÁO CÔNG VIỆC HẰNG NGÀY"
-                      editable="bottom"
-                      decoration-success="state == 'confirmed'"
-                      decoration-danger="state == 'wrong'"
-                      decoration-muted="state == 'draft'">
-                    <field name="sequence" widget="handle"/>
-                    <field name="name" string="STT" optional="show" readonly="1"/>
-                    <field name="date" string="Ngày" readonly="state != 'draft'" optional="hide"/>
-                    <field name="partner_id" string="Tên Khách Hàng" readonly="state != 'draft'"/>
-                    <field name="product_ids" string="Sản phẩm" readonly="state != 'draft'" widget="many2many_tags"/>
-                    <field name="product_categ_ids" widget="many2many_tags" string="Hình thức" readonly="state != 'draft'" optional="hide"/>
-<!--                    <field name="form_type" string="Hình thức" readonly="state != 'draft'" optional="hide"/>-->
-                    <field name="description" string="Diễn giải" readonly="state != 'draft'" width="500px"/>
+                      editable="bottom">
+                    <field name="name" string="STT" optional="hide" readonly="1"/>
+                    <field name="date_display" string="Ngày" readonly="1"/>
+                    <field name="partner_id" options="{'no_create': True}" string="Tên Khách Hàng"
+                           readonly="state != 'draft'"/>
+                    <field name="description" string="Sản phẩm" readonly="state != 'draft'"/>
+                    <field name="product_ids" optional="hide" string="Sản phẩm" readonly="state != 'draft'"
+                           widget="many2many_tags"/>
+                    <field name="product_categ_ids" widget="many2many_tags" string="Hình thức"
+                           readonly="state != 'draft'"/>
                     <field name="quantity" string="Số lượng" sum="Tổng số lượng" readonly="state != 'draft'"/>
-                    <field name="turn_count" string="Số lượt" sum="Tổng lượt" readonly="state != 'draft'"/>
-                    <field name="unit_price" string="Đơn giá" widget="monetary" readonly="state != 'draft'"/>
+                    <field name="categ_count" string="Số lượt" sum="Tổng số lượt" readonly="state != 'draft'"/>
+                    <field name="unit_price" string="Đơn giá" readonly="state != 'draft'"/>
                     <field name="total_amount" string="Thành tiền" readonly="state != 'draft'"
-                           widget="monetary" sum="Tổng doanh thu"/>
-                    <field name="note" string="Ghi chú"/>
-                    <field name="state" optional="show" widget="badge"/>
-                    <field name="user_id" optional="show"/>
-                    <field name="currency_id" column_invisible="True"/>
-                    <field name="create_uid" readonly="1" string="Người tạo" optional="hide"/>
+                            sum="Tổng doanh thu"/>
+                    <field name="design_count" readonly="state != 'draft'" sum="Tổng thiết kế"/>
+                    <field name="create_uid" string="Người tạo" readonly="1"/>
+                    <field name="state" optional="show" widget="badge" string="Trạng thái"
+                           decoration-muted="state == 'draft'" decoration-success="state == 'confirmed'"/>
                     <field name="write_uid" readonly="1" string="Người chỉnh sửa cuối cùng" optional="hide"/>
                     <button name="action_confirm" type="object" groups="base.group_system"
                             string="Xác nhận" icon="fa-check"
                             class="btn-success"
                             invisible="state == 'confirmed'"/>
-                    <button name="action_mark_wrong" type="object" groups="base.group_system"
-                            string="Sai đơn hàng" icon="fa-times"
-                            class="btn-danger"
-                            invisible="state in ('wrong','draft')"/>
                     <button name="action_reset_draft" type="object" groups="base.group_system"
                             string="Đặt lại nháp" icon="fa-undo"
                             invisible="state == 'draft'"/>
+                    <field name="note" string="Ghi chú"/>
                 </tree>
             </field>
         </record>
 
-        <record id="view_sale_kpi_report_form" model="ir.ui.view">
-            <field name="name">sale.kpi.report.form</field>
-            <field name="model">sale.kpi.report</field>
-            <field name="arch" type="xml">
-                <form string="Báo cáo công việc">
-                    <header>
-                        <button name="action_confirm" type="object"
-                                string="Xác nhận" class="btn-success"
-                                invisible="state == 'confirmed'"/>
-                        <button name="action_mark_wrong" type="object"
-                                string="Sai đơn hàng" class="btn-danger"
-                                invisible="state == 'wrong'"/>
-                        <button name="action_reset_draft" type="object"
-                                string="Đặt lại nháp"
-                                invisible="state == 'draft'"/>
-                        <field name="state" widget="statusbar"
-                               statusbar_visible="draft,confirmed"/>
-                    </header>
-                    <sheet>
-                        <div class="oe_title">
-                            <h1>
-                                <field name="name" readonly="1"/>
-                            </h1>
-                        </div>
-                        <group>
-                            <group>
-                                <field name="date"/>
-                                <field name="partner_id"
-                                       options="{'no_create': True}"/>
-                                <field name="partner_phone"/>
-                                <field name="user_id"/>
-                            </group>
-                            <group>
-                                <field name="product_id"
-                                       domain="[('sale_ok', '=', True)]"
-                                       options="{'no_create': True}"/>
-                                <field name="form_type"/>
-                                <field name="description"/>
-                                <field name="sale_order_id"/>
-                            </group>
-                        </group>
-                        <group string="Số liệu">
-                            <group>
-                                <field name="quantity"/>
-                                <field name="turn_count"/>
-                            </group>
-                            <group>
-                                <field name="unit_price" widget="monetary"/>
-                                <field name="total_amount" widget="monetary"/>
-                                <field name="currency_id" invisible="1"/>
-                            </group>
-                        </group>
-                        <group>
-                            <field name="note"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
 
         <record id="view_sale_kpi_report_search" model="ir.ui.view">
             <field name="name">sale.kpi.report.search</field>
@@ -157,7 +92,6 @@
                 <pivot string="Phân tích KPI">
                     <field name="date" type="row" interval="day"/>
                     <field name="user_id" type="col"/>
-                    <field name="turn_count" type="measure"/>
                     <field name="total_amount" type="measure"/>
                 </pivot>
             </field>

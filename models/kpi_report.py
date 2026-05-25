@@ -12,6 +12,7 @@ class SaleKpiReport(models.Model):
     name = fields.Char('STT', default=lambda self: _('Mới'), copy=False, readonly=True)
     sequence = fields.Integer('STT', default=10)
     date = fields.Datetime('Ngày', default=fields.Datetime.today, required=True, tracking=True)
+    date_display = fields.Char('Ngày tạo', compute='_compute_date_display')
     partner_id = fields.Many2one('res.partner', string='Tên Khách Hàng', required=True)
     partner_phone = fields.Char('Số điện thoại', related='partner_id.phone', store=True)
 
@@ -34,9 +35,8 @@ class SaleKpiReport(models.Model):
     description = fields.Char('Diễn giải')
 
     quantity = fields.Float('Số lượng', default=1.0, required=True)
-    turn_count = fields.Integer('Số lượt', default=1, required=True)
     unit_price = fields.Float('Đơn giá')
-    total_amount = fields.Monetary(
+    total_amount = fields.Float(
         'Thành tiền', compute='_compute_total_amount', store=True)
 
     currency_id = fields.Many2one(
@@ -57,7 +57,15 @@ class SaleKpiReport(models.Model):
 
     sale_order_id = fields.Many2one('sale.order', string='Đơn hàng liên quan')
 
-    product_categ_ids = fields.Many2many('product.categ',string='Hình thức')
+    product_categ_ids = fields.Many2many('product.categ', string='Hình thức')
+    categ_count = fields.Integer('Số lượt', compute='_compute_categ_count')
+    design_count = fields.Float('Thiết kế')
+
+
+    @api.depends('product_categ_ids')
+    def _compute_categ_count(self):
+        for record in self:
+            record.categ_count = len(record.product_categ_ids)
 
     def unlink(self):
         if not self.env.user.has_group('base.group_system'):
@@ -67,6 +75,10 @@ class SaleKpiReport(models.Model):
 
         return super().unlink()
 
+    @api.depends('create_date')
+    def _compute_date_display(self):
+        for rec in self:
+            rec.date_display = rec.create_date.strftime('%d/%m %H:%M')
 
     @api.depends('quantity', 'unit_price')
     def _compute_total_amount(self):
@@ -84,9 +96,6 @@ class SaleKpiReport(models.Model):
                 raise UserError(_('Đơn đã được xác nhận.'))
             rec.state = 'confirmed'
 
-    def action_mark_wrong(self):
-        for rec in self:
-            rec.state = 'wrong'
 
     def action_reset_draft(self):
         for rec in self:

@@ -24,6 +24,7 @@ Long description of module's purpose
     'data': [
         'data/data.xml',
         'security/ir.model.access.csv',
+        'security/kpi_report_security.xml',
         'reports/quotation_report.xml',
         'reports/quotation_report_template.xml',
         'reports/quotation_report_2.xml',
