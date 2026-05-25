@@ -26,7 +26,7 @@
 
 
         <record id="action_product_categ" model="ir.actions.act_window">
-            <field name="name">product categ</field>
+            <field name="name">Hình thức</field>
             <field name="res_model">product.categ</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
