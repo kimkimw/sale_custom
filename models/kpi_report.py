@@ -11,7 +11,7 @@ class SaleKpiReport(models.Model):
 
     name = fields.Char('STT', default=lambda self: _('Mới'), copy=False, readonly=True)
     sequence = fields.Integer('STT', default=10)
-    date = fields.Datetime('Ngày', default=fields.Datetime.today, required=True, tracking=True)
+    date = fields.Datetime('Ngày', default=fields.Datetime.now, required=True, tracking=True)
     date_display = fields.Char('Ngày tạo', compute='_compute_date_display')
     partner_id = fields.Many2one('res.partner', string='Tên Khách Hàng', required=True)
     partner_phone = fields.Char('Số điện thoại', related='partner_id.phone', store=True)
@@ -78,7 +78,12 @@ class SaleKpiReport(models.Model):
     @api.depends('create_date')
     def _compute_date_display(self):
         for rec in self:
-            rec.date_display = rec.create_date.strftime('%d/%m %H:%M')
+            if rec.create_date:
+                # create_date lưu theo UTC -> đổi sang timezone của user trước khi format
+                local_dt = fields.Datetime.context_timestamp(rec, rec.create_date)
+                rec.date_display = local_dt.strftime('%d/%m %H:%M')
+            else:
+                rec.date_display = ''
 
     @api.depends('quantity', 'unit_price')
     def _compute_total_amount(self):
