@@ -35,9 +35,10 @@ class SaleKpiReport(models.Model):
     description = fields.Char('Diễn giải')
 
     quantity = fields.Float('Số lượng', default=1.0, required=True)
-    unit_price = fields.Float('Đơn giá')
+    unit_price = fields.Float('Đơn giá', digits=(16, 0))
     total_amount = fields.Float(
-        'Thành tiền', compute='_compute_total_amount', store=True)
+        'Thành tiền', compute='_compute_total_amount', store=True,
+        digits=(16, 0))
 
     currency_id = fields.Many2one(
         'res.currency', string='Tiền tệ',

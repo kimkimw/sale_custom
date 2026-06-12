@@ -26,8 +26,8 @@
                            readonly="state != 'draft'" options="{'no_create': True}"/>
                     <field name="quantity" string="Số lượng" sum="Tổng số lượng" readonly="state != 'draft'" required="1"/>
                     <field name="categ_count" string="Số lượt" sum="Tổng số lượt" readonly="1"/>
-                    <field name="unit_price" string="Đơn giá" readonly="state != 'draft'" required="1"/>
-                    <field name="total_amount" string="Thành tiền" readonly="1"
+                    <field name="unit_price" string="Đơn giá" readonly="state != 'draft'" required="1" digits="[16,0]"/>
+                    <field name="total_amount" string="Thành tiền" readonly="1" digits="[16,0]"
                             sum="Tổng doanh thu"/>
                     <field name="design_count" readonly="state != 'draft'" sum="Tổng thiết kế"/>
                     <field name="create_uid" string="Người tạo" readonly="1"/>
